@@ -37,7 +37,7 @@ def summary_string(model, input_size, batch_size=-1, device=torch.device('cuda:0
                 summary[m_key]["output_shape"] = list(output.size())
                 summary[m_key]["output_shape"][0] = batch_size
 
-            params = 0
+            params = torch.tensor([0])
             if hasattr(module, "weight") and hasattr(module.weight, "size"):
                 params += torch.prod(torch.LongTensor(list(module.weight.size())))
                 summary[m_key]["trainable"] = module.weight.requires_grad
